@@ -93,8 +93,6 @@ object AddForm: TAddForm
     Align = alBottom
     BorderStyle = bsSingle
     TabOrder = 3
-    ExplicitTop = 80
-    ExplicitWidth = 285
     object Button1: TButton
       Left = 247
       Top = 8
@@ -112,13 +110,5 @@ object AddForm: TAddForm
       TabOrder = 1
       OnClick = Button2Click
     end
-  end
-  object Button3: TButton
-    Left = 249
-    Top = 56
-    Width = 75
-    Height = 25
-    Caption = 'Button3'
-    TabOrder = 4
   end
 end

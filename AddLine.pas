@@ -18,7 +18,6 @@ type
     JvPanel1: TJvPanel;
     Button1: TButton;
     Button2: TButton;
-    Button3: TButton;
     procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
