@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.316,C:\Users\user\Documents\Embarcadero\Studio\Projects\Unit1.pas=D:\Projects\GCodeConstructor\GCC.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.316,C:\Users\user\Documents\Embarcadero\Studio\Projects\Unit1.dfm=D:\Projects\GCodeConstructor\GCC.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.547,C:\Users\user\Documents\Embarcadero\Studio\Projects\Project1.dproj=D:\Projects\GCodeConstructor\Project_GCC.dproj</Transaction>
     <Transaction>1899.12.30 00:00:00.000.031,=C:\Users\user\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.651,=C:\Users\user\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2020.09.17 13:36:24.225,=C:\Users\user\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2020.09.17 13:37:00.316,D:\Projects\GCodeConstructor\GCC.dfm=C:\Users\user\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
-    <Transaction>2020.09.17 13:37:00.316,D:\Projects\GCodeConstructor\GCC.pas=C:\Users\user\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2020.09.17 13:37:05.547,D:\Projects\GCodeConstructor\Project_GCC.dproj=C:\Users\user\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.225,=C:\Users\user\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>
