@@ -8,7 +8,7 @@ uses
   JvgShadow, Vcl.ComCtrls, JvExComCtrls, JvStatusBar, JvSpeedbar, JvExExtCtrls,
   JvExtComponent, System.ImageList, Vcl.ImgList, System.Actions, Vcl.ActnList,
   Vcl.Menus, JvMenus, JvFormPlacement, JvComponentBase, JvAppStorage,
-  JvAppIniStorage, Vcl.Grids, JvExGrids, JvStringGrid;
+  JvAppIniStorage, Vcl.Grids, JvExGrids, JvStringGrid, AddLine;
 
 type
   TMainForm = class(TForm)
@@ -39,6 +39,7 @@ type
     Action_Exit: TAction;
     procedure FormCreate(Sender: TObject);
     procedure Action_ExitExecute(Sender: TObject);
+    procedure Action_AddLineExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -51,6 +52,11 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TMainForm.Action_AddLineExecute(Sender: TObject);
+begin
+  AddForm.ShowModal;
+end;
 
 procedure TMainForm.Action_ExitExecute(Sender: TObject);
 begin

@@ -7,5 +7,8 @@
     <Transaction>1899.12.30 00:00:00.000.031,=C:\Users\user\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.651,=C:\Users\user\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.225,=C:\Users\user\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020.09.17 15:46:57.774,=D:\Projects\GCodeConstructor\Unit1.pas</Transaction>
+    <Transaction>2020.09.17 15:54:17.978,D:\Projects\GCodeConstructor\AddLine.pas=D:\Projects\GCodeConstructor\Unit1.pas</Transaction>
+    <Transaction>2020.09.17 15:54:17.978,D:\Projects\GCodeConstructor\AddLine.dfm=D:\Projects\GCodeConstructor\Unit1.dfm</Transaction>
   </Transactions>
 </BorlandProject>

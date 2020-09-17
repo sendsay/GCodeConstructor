@@ -41,9 +41,7 @@ object MainForm: TMainForm
     BtnHeight = 23
     Images = ImageList1
     TabOrder = 1
-    ExplicitLeft = 304
-    ExplicitTop = 56
-    ExplicitWidth = 185
+    ExplicitTop = -3
     InternalVer = 1
     object JvSpeedBarSection1: TJvSpeedBarSection
       Caption = 'Untitled (0)'
@@ -57,6 +55,7 @@ object MainForm: TMainForm
       Left = 75
       Top = 3
       Visible = True
+      OnClick = Action_AddLineExecute
       SectionName = 'Untitled (0)'
     end
     object JvSpeedItem2: TJvSpeedItem
@@ -2275,6 +2274,7 @@ object MainForm: TMainForm
     Top = 128
     object Action_AddLine: TAction
       Caption = 'Action_AddLine'
+      OnExecute = Action_AddLineExecute
     end
     object Action_InsLine: TAction
       Caption = 'Action_AddLine'
