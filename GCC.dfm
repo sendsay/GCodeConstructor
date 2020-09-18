@@ -2,7 +2,7 @@ object MainForm: TMainForm
   Left = 0
   Top = 0
   Caption = 'MainForm'
-  ClientHeight = 343
+  ClientHeight = 418
   ClientWidth = 791
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,7 +17,7 @@ object MainForm: TMainForm
   TextHeight = 13
   object JvStatusBar1: TJvStatusBar
     Left = 0
-    Top = 324
+    Top = 399
     Width = 791
     Height = 19
     Panels = <>
@@ -26,7 +26,7 @@ object MainForm: TMainForm
     Left = 0
     Top = 0
     Width = 791
-    Height = 29
+    Height = 74
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -34,9 +34,10 @@ object MainForm: TMainForm
     Font.Style = []
     BtnOffsetHorz = 3
     BtnOffsetVert = 3
-    BtnWidth = 24
-    BtnHeight = 23
+    BtnWidth = 64
+    BtnHeight = 64
     Images = ImageList1
+    BorderStyle = bsSingle
     TabOrder = 1
     InternalVer = 1
     object JvSpeedBarSection1: TJvSpeedBarSection
@@ -44,11 +45,9 @@ object MainForm: TMainForm
     end
     object JvSpeedItem1: TJvSpeedItem
       Action = Action_AddLine
-      BtnCaption = 'Action_AddLine'
-      Caption = 'Add'
       ImageIndex = 0
-      Spacing = 1
-      Left = 75
+      Spacing = 0
+      Left = 283
       Top = 3
       Visible = True
       OnClick = Action_AddLineExecute
@@ -56,32 +55,30 @@ object MainForm: TMainForm
     end
     object JvSpeedItem2: TJvSpeedItem
       Action = Action_InsLine
-      BtnCaption = 'Action_AddLine'
       Caption = 'JvSpeedItem2'
       ImageIndex = 2
-      Spacing = 1
-      Left = 99
+      Spacing = 0
+      Left = 355
       Top = 3
       Visible = True
       SectionName = 'Untitled (0)'
     end
     object JvSpeedItem3: TJvSpeedItem
       Action = Action_DeleteLine
-      BtnCaption = 'Action_DeleteLine'
-      Caption = 'Delete'
       ImageIndex = 1
-      Spacing = 1
-      Left = 123
+      Spacing = 0
+      Left = 427
       Top = 3
       Visible = True
+      OnClick = Action_DeleteLineExecute
       SectionName = 'Untitled (0)'
     end
   end
   object JvStringGrid1: TJvStringGrid
     Left = 8
-    Top = 32
-    Width = 609
-    Height = 362
+    Top = 80
+    Width = 775
+    Height = 321
     ColCount = 3
     FixedCols = 0
     RowCount = 1
@@ -107,7 +104,7 @@ object MainForm: TMainForm
     Left = 568
     Top = 72
     Bitmap = {
-      494C010103003000300040004000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103003400340040004000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000000100004000000001002000000000000000
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -2231,17 +2228,16 @@ object MainForm: TMainForm
     Left = 496
     Top = 128
     object Action_AddLine: TAction
-      Caption = 'Action_AddLine'
+      ShortCut = 16460
       OnExecute = Action_AddLineExecute
     end
     object Action_InsLine: TAction
-      Caption = 'Action_AddLine'
     end
     object Action_DeleteLine: TAction
-      Caption = 'Action_DeleteLine'
+      Enabled = False
+      OnExecute = Action_DeleteLineExecute
     end
     object Action_Exit: TAction
-      Caption = 'Action_Exit'
       ShortCut = 16472
       OnExecute = Action_ExitExecute
     end

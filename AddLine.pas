@@ -19,6 +19,7 @@ type
     JvPanel1: TJvPanel;
     Button1: TButton;
     Button2: TButton;
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,5 +36,10 @@ uses
 
 {$R *.dfm}
 
+
+procedure TAddForm.FormShow(Sender: TObject);
+begin
+  JvFilenameEdit1.SetFocus;
+end;
 
 end.

@@ -8,7 +8,7 @@ uses
   JvgShadow, Vcl.ComCtrls, JvExComCtrls, JvStatusBar, JvSpeedbar, JvExExtCtrls,
   JvExtComponent, System.ImageList, Vcl.ImgList, System.Actions, Vcl.ActnList,
   Vcl.Menus, JvMenus, JvFormPlacement, JvComponentBase, JvAppStorage,
-  JvAppIniStorage, Vcl.Grids, JvExGrids, JvStringGrid ;
+  JvAppIniStorage, Vcl.Grids, JvExGrids, JvStringGrid, System.UITypes ;
 
 type
   TMainForm = class(TForm)
@@ -35,6 +35,7 @@ type
     procedure Action_AddLineExecute(Sender: TObject);
     procedure Action_OkButtonAddLineExecute(Sender: TObject);
     procedure Action_CancelButtonAddLineExecute(Sender: TObject);
+    procedure Action_DeleteLineExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -78,6 +79,7 @@ begin
     JvStringGrid1.FixedRows := 1;
 
     AddForm.Close;
+    Action_DeleteLine.Enabled := True;
     end
   else
     begin
@@ -95,9 +97,27 @@ begin
   AddForm.Close;
 end;
 
+procedure TMainForm.Action_DeleteLineExecute(Sender: TObject);
+begin
+
+
+    if MessageDlg('Are you sure?', mtConfirmation,
+      [mbYes, mbNo], 0, mbYes) = mrYes then
+      begin
+        JvStringGrid1.RemoveRow(JvStringGrid1.Row);
+      end;
+
+      if (JvStringGrid1.Row = 0) then
+  begin
+    Action_DeleteLine.Enabled := False;
+
+  end;
+
+end;
+
 procedure TMainForm.Action_ExitExecute(Sender: TObject);
 begin
-  Application.Terminate;
+  Close;
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);

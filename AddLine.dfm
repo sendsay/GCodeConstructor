@@ -12,6 +12,7 @@ object AddForm: TAddForm
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object JvLabel1: TJvLabel
