@@ -2,7 +2,7 @@ object MainForm: TMainForm
   Left = 0
   Top = 0
   Caption = 'MainForm'
-  ClientHeight = 419
+  ClientHeight = 343
   ClientWidth = 791
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -10,20 +10,17 @@ object MainForm: TMainForm
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  Menu = JvMainMenu1
+  Menu = MainMenu1
   OldCreateOrder = False
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object JvStatusBar1: TJvStatusBar
     Left = 0
-    Top = 400
+    Top = 324
     Width = 791
     Height = 19
     Panels = <>
-    ExplicitLeft = 448
-    ExplicitTop = 160
-    ExplicitWidth = 0
   end
   object JvSpeedBar1: TJvSpeedBar
     Left = 0
@@ -41,7 +38,6 @@ object MainForm: TMainForm
     BtnHeight = 23
     Images = ImageList1
     TabOrder = 1
-    ExplicitTop = -3
     InternalVer = 1
     object JvSpeedBarSection1: TJvSpeedBarSection
       Caption = 'Untitled (0)'
@@ -88,7 +84,8 @@ object MainForm: TMainForm
     Height = 362
     ColCount = 3
     FixedCols = 0
-    RowCount = 2
+    RowCount = 1
+    FixedRows = 0
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goDrawFocusSelected, goRowSelect]
     TabOrder = 2
     Alignment = taLeftJustify
@@ -101,6 +98,8 @@ object MainForm: TMainForm
       302
       64
       64)
+    RowHeights = (
+      24)
   end
   object ImageList1: TImageList
     Height = 64
@@ -108,7 +107,7 @@ object MainForm: TMainForm
     Left = 568
     Top = 72
     Bitmap = {
-      494C010103001400180040004000FFFFFFFFFF00FFFFFFFFFFFFFFFF424D3600
+      494C010103003000300040004000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000000100004000000001002000000000000000
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -2224,18 +2223,58 @@ object MainForm: TMainForm
       FFFFFFFFFFFFFFFF0000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFF0000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFF0000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFF0000000000000000}
+      FFFFFFFFFFFFFFFF000000000000000000000000000000000000000000000000
+      000000000000}
   end
-  object JvMainMenu1: TJvMainMenu
-    ImageMargin.Left = 0
-    ImageMargin.Top = 0
-    ImageMargin.Right = 0
-    ImageMargin.Bottom = 0
-    ImageSize.Height = 0
-    ImageSize.Width = 0
-    ShowCheckMarks = True
-    Left = 648
-    Top = 72
+  object ActionList1: TActionList
+    Images = ImageList1
+    Left = 496
+    Top = 128
+    object Action_AddLine: TAction
+      Caption = 'Action_AddLine'
+      OnExecute = Action_AddLineExecute
+    end
+    object Action_InsLine: TAction
+      Caption = 'Action_AddLine'
+    end
+    object Action_DeleteLine: TAction
+      Caption = 'Action_DeleteLine'
+    end
+    object Action_Exit: TAction
+      Caption = 'Action_Exit'
+      ShortCut = 16472
+      OnExecute = Action_ExitExecute
+    end
+    object Action_OkButtonAddLine: TAction
+      Caption = 'OK'
+      OnExecute = Action_OkButtonAddLineExecute
+    end
+    object Action_CancelButtonAddLine: TAction
+      Caption = 'Cancel'
+      OnExecute = Action_CancelButtonAddLineExecute
+    end
+  end
+  object JvAppIniFileStorage1: TJvAppIniFileStorage
+    StorageOptions.BooleanStringTrueValues = 'TRUE, YES, Y'
+    StorageOptions.BooleanStringFalseValues = 'FALSE, NO, N'
+    AutoFlush = True
+    AutoReload = True
+    FileName = 'GCC.ini'
+    SubStorages = <>
+    Left = 496
+    Top = 208
+  end
+  object JvFormStorage1: TJvFormStorage
+    AppStorage = JvAppIniFileStorage1
+    AppStoragePath = '%FORM_NAME%\'
+    Options = [fpLocation]
+    StoredValues = <>
+    Left = 568
+    Top = 208
+  end
+  object MainMenu1: TMainMenu
+    Left = 392
+    Top = 136
     object File1: TMenuItem
       Caption = 'File'
       object Exit1: TMenuItem
@@ -2267,43 +2306,5 @@ object MainForm: TMainForm
         Caption = 'About'
       end
     end
-  end
-  object ActionList1: TActionList
-    Images = ImageList1
-    Left = 496
-    Top = 128
-    object Action_AddLine: TAction
-      Caption = 'Action_AddLine'
-      OnExecute = Action_AddLineExecute
-    end
-    object Action_InsLine: TAction
-      Caption = 'Action_AddLine'
-    end
-    object Action_DeleteLine: TAction
-      Caption = 'Action_DeleteLine'
-    end
-    object Action_Exit: TAction
-      Caption = 'Action_Exit'
-      ShortCut = 16472
-      OnExecute = Action_ExitExecute
-    end
-  end
-  object JvAppIniFileStorage1: TJvAppIniFileStorage
-    StorageOptions.BooleanStringTrueValues = 'TRUE, YES, Y'
-    StorageOptions.BooleanStringFalseValues = 'FALSE, NO, N'
-    AutoFlush = True
-    AutoReload = True
-    FileName = 'GCC.ini'
-    SubStorages = <>
-    Left = 496
-    Top = 208
-  end
-  object JvFormStorage1: TJvFormStorage
-    AppStorage = JvAppIniFileStorage1
-    AppStoragePath = '%FORM_NAME%'
-    Options = [fpLocation]
-    StoredValues = <>
-    Left = 568
-    Top = 208
   end
 end

@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
   JvExExtCtrls, JvExtComponent, JvPanel, JvExControls, JvLabel, JvExStdCtrls,
-  JvEdit, Vcl.Mask, JvExMask, JvToolEdit, JvComponentBase, JvFormPlacement;
+  JvEdit, Vcl.Mask, JvExMask, JvToolEdit, JvComponentBase, JvFormPlacement,
+  System.Actions, Vcl.ActnList;
 
 type
   TAddForm = class(TForm)
@@ -18,7 +19,6 @@ type
     JvPanel1: TJvPanel;
     Button1: TButton;
     Button2: TButton;
-    procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,11 +30,10 @@ var
 
 implementation
 
+uses
+  GCC;
+
 {$R *.dfm}
 
-procedure TAddForm.Button2Click(Sender: TObject);
-begin
-  AddForm.Close;
-end;
 
 end.

@@ -19,14 +19,6 @@ type
     JvSpeedItem2: TJvSpeedItem;
     JvSpeedItem3: TJvSpeedItem;
     ImageList1: TImageList;
-    JvMainMenu1: TJvMainMenu;
-    Projects1: TMenuItem;
-    ables1: TMenuItem;
-    Help1: TMenuItem;
-    Add1: TMenuItem;
-    Insertline1: TMenuItem;
-    Deleteline1: TMenuItem;
-    About1: TMenuItem;
     ActionList1: TActionList;
     Action_AddLine: TAction;
     Action_InsLine: TAction;
@@ -34,28 +26,63 @@ type
     JvAppIniFileStorage1: TJvAppIniFileStorage;
     JvFormStorage1: TJvFormStorage;
     JvStringGrid1: TJvStringGrid;
-    File1: TMenuItem;
-    Exit1: TMenuItem;
     Action_Exit: TAction;
+    MainMenu1: TMainMenu;
+    Action_OkButtonAddLine: TAction;
+    Action_CancelButtonAddLine: TAction;
     procedure FormCreate(Sender: TObject);
     procedure Action_ExitExecute(Sender: TObject);
     procedure Action_AddLineExecute(Sender: TObject);
+    procedure Action_OkButtonAddLineExecute(Sender: TObject);
+    procedure Action_CancelButtonAddLineExecute(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
   end;
 
+  TMyPoint = record
+    PosX, PosY : Double;
+  end;
+
 var
   MainForm: TMainForm;
+
 
 implementation
 
 {$R *.dfm}
 
+procedure TMainForm.Action_OkButtonAddLineExecute(Sender: TObject);
+var
+  FName : string;
+  BackPoint : TMyPoint;
+begin
+  FName := AddForm.JvFilenameEdit1.FileName;
+  BackPoint.PosX := StrToInt(AddForm.JvEdit1.Text);
+  BackPoint.PosY := StrToInt(AddForm.JvEdit2.Text);
+
+  JvStringGrid1.InsertRow(JvStringGrid1.RowCount);
+  JvStringGrid1.ActivateCell(0, JvStringGrid1.RowCount - 1);
+
+  JvStringGrid1.Cells[0, JvStringGrid1.RowCount - 1] := FName;
+  JvStringGrid1.Cells[1, JvStringGrid1.RowCount - 1] := FloatToStr(BackPoint.PosX);
+  JvStringGrid1.Cells[2, JvStringGrid1.RowCount - 1] := FloatToStr(BackPoint.PosY);
+  JvStringGrid1.FixedRows := 1;
+
+
+  AddForm.Close;
+
+end;
+
 procedure TMainForm.Action_AddLineExecute(Sender: TObject);
 begin
   AddForm.ShowModal;
+end;
+
+procedure TMainForm.Action_CancelButtonAddLineExecute(Sender: TObject);
+begin
+  AddForm.Close;
 end;
 
 procedure TMainForm.Action_ExitExecute(Sender: TObject);

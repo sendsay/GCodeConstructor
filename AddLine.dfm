@@ -89,26 +89,29 @@ object AddForm: TAddForm
     Top = 103
     Width = 413
     Height = 43
+    Margins.Left = 22
+    Margins.Top = 22
+    Margins.Right = 22
+    Margins.Bottom = 22
     ShowCaption = False
     Align = alBottom
     BorderStyle = bsSingle
     TabOrder = 3
     object Button1: TButton
-      Left = 247
+      Left = 235
       Top = 8
       Width = 75
       Height = 25
-      Caption = 'OK'
+      Action = MainForm.Action_OkButtonAddLine
       TabOrder = 0
     end
     object Button2: TButton
-      Left = 328
+      Left = 316
       Top = 8
       Width = 75
       Height = 25
-      Caption = 'Cancel'
+      Action = MainForm.Action_CancelButtonAddLine
       TabOrder = 1
-      OnClick = Button2Click
     end
   end
 end
