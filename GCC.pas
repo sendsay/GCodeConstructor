@@ -8,7 +8,9 @@ uses
   JvgShadow, Vcl.ComCtrls, JvExComCtrls, JvStatusBar, JvSpeedbar, JvExExtCtrls,
   JvExtComponent, System.ImageList, Vcl.ImgList, System.Actions, Vcl.ActnList,
   Vcl.Menus, JvMenus, JvFormPlacement, JvComponentBase, JvAppStorage,
-  JvAppIniStorage, Vcl.Grids, JvExGrids, JvStringGrid, System.UITypes ;
+  JvAppIniStorage, Vcl.Grids, JvExGrids, JvStringGrid, System.UITypes, JvLabel,
+  Vcl.StdCtrls, JvExStdCtrls, JvEdit, JvGroupBox, JvPanel, Vcl.Mask, JvExMask,
+  JvToolEdit, JvBaseEdits ;
 
 type
   TMainForm = class(TForm)
@@ -21,7 +23,7 @@ type
     ImageList1: TImageList;
     ActionList1: TActionList;
     Action_AddLine: TAction;
-    Action_InsLine: TAction;
+    Action_EditLine: TAction;
     Action_DeleteLine: TAction;
     JvAppIniFileStorage1: TJvAppIniFileStorage;
     JvFormStorage1: TJvFormStorage;
@@ -30,12 +32,21 @@ type
     MainMenu1: TMainMenu;
     Action_OkButtonAddLine: TAction;
     Action_CancelButtonAddLine: TAction;
+    JvPanel1: TJvPanel;
+    JvGroupBox1: TJvGroupBox;
+    JvLabel1: TJvLabel;
+    JvLabel2: TJvLabel;
+    JvSpeedItem4: TJvSpeedItem;
+    Action_Process: TAction;
+    JvCalcEdit1: TJvCalcEdit;
+    JvCalcEdit2: TJvCalcEdit;
     procedure FormCreate(Sender: TObject);
     procedure Action_ExitExecute(Sender: TObject);
     procedure Action_AddLineExecute(Sender: TObject);
     procedure Action_OkButtonAddLineExecute(Sender: TObject);
     procedure Action_CancelButtonAddLineExecute(Sender: TObject);
     procedure Action_DeleteLineExecute(Sender: TObject);
+    procedure Action_ProcessExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -48,7 +59,6 @@ type
 
 var
   MainForm: TMainForm;
-
 
 implementation
 
@@ -67,8 +77,8 @@ begin
   if (FName <> '') then
     begin
 
-    BackPoint.PosX := StrToInt(AddForm.JvEdit1.Text);
-    BackPoint.PosY := StrToInt(AddForm.JvEdit2.Text);
+    BackPoint.PosX := AddForm.JvCalcEdit1.Value;
+    BackPoint.PosY := AddForm.JvCalcEdit2.Value;
 
     JvStringGrid1.InsertRow(JvStringGrid1.RowCount);
     JvStringGrid1.ActivateCell(0, JvStringGrid1.RowCount - 1);
@@ -87,6 +97,23 @@ begin
     end;
 end;
 
+procedure TMainForm.Action_ProcessExecute(Sender: TObject);
+var
+  FileOutput, FileInput : file;
+
+begin
+  AssignFile(FileOutput, 'C:\test.txt');
+  Rewrite(FileOutput);
+
+  ShowMessage(FloatToStr(JvCalcEdit1.Value));
+
+
+
+
+
+  CloseFile(FileOutput);
+end;
+
 procedure TMainForm.Action_AddLineExecute(Sender: TObject);
 begin
   AddForm.ShowModal;
@@ -99,19 +126,16 @@ end;
 
 procedure TMainForm.Action_DeleteLineExecute(Sender: TObject);
 begin
+  if MessageDlg('Are you sure?', mtConfirmation,
+    [mbYes, mbNo], 0, mbYes) = mrYes then
+    begin
+      JvStringGrid1.RemoveRow(JvStringGrid1.Row);
+    end;
 
-
-    if MessageDlg('Are you sure?', mtConfirmation,
-      [mbYes, mbNo], 0, mbYes) = mrYes then
-      begin
-        JvStringGrid1.RemoveRow(JvStringGrid1.Row);
-      end;
-
-      if (JvStringGrid1.Row = 0) then
-  begin
-    Action_DeleteLine.Enabled := False;
-
-  end;
+  if (JvStringGrid1.Row = 0) then
+    begin
+      Action_DeleteLine.Enabled := False;
+    end;
 
 end;
 

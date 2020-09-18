@@ -2,25 +2,25 @@ object AddForm: TAddForm
   Left = 0
   Top = 0
   Caption = 'AddForm'
-  ClientHeight = 146
+  ClientHeight = 144
   ClientWidth = 413
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -13
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 16
   object JvLabel1: TJvLabel
     Left = 15
     Top = 42
-    Width = 60
+    Width = 59
     Height = 16
-    Caption = 'Back to X:'
+    Caption = 'Next to X:'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -31,9 +31,9 @@ object AddForm: TAddForm
   object JvLabel2: TJvLabel
     Left = 15
     Top = 72
-    Width = 59
+    Width = 58
     Height = 16
-    Caption = 'Back to Y:'
+    Caption = 'Next to Y:'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -55,39 +55,9 @@ object AddForm: TAddForm
     TabOrder = 0
     Text = ''
   end
-  object JvEdit1: TJvEdit
-    Left = 81
-    Top = 38
-    Width = 57
-    Height = 24
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 1
-    Text = '0'
-    NumbersOnly = True
-  end
-  object JvEdit2: TJvEdit
-    Left = 81
-    Top = 68
-    Width = 57
-    Height = 24
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 2
-    Text = '0'
-    NumbersOnly = True
-  end
   object JvPanel1: TJvPanel
     Left = 0
-    Top = 103
+    Top = 101
     Width = 413
     Height = 43
     Margins.Left = 22
@@ -97,7 +67,8 @@ object AddForm: TAddForm
     ShowCaption = False
     Align = alBottom
     BorderStyle = bsSingle
-    TabOrder = 3
+    TabOrder = 1
+    ExplicitTop = 103
     object Button1: TButton
       Left = 235
       Top = 8
@@ -114,5 +85,29 @@ object AddForm: TAddForm
       Action = MainForm.Action_CancelButtonAddLine
       TabOrder = 1
     end
+  end
+  object JvCalcEdit2: TJvCalcEdit
+    Left = 81
+    Top = 38
+    Width = 93
+    Height = 24
+    DecimalPlaces = 3
+    DisplayFormat = ',0.000'
+    FormatOnEditing = True
+    PopupAlign = epaLeft
+    TabOrder = 2
+    DecimalPlacesAlwaysShown = True
+  end
+  object JvCalcEdit1: TJvCalcEdit
+    Left = 80
+    Top = 68
+    Width = 93
+    Height = 24
+    DecimalPlaces = 3
+    DisplayFormat = ',0.000'
+    FormatOnEditing = True
+    PopupAlign = epaLeft
+    TabOrder = 3
+    DecimalPlacesAlwaysShown = True
   end
 end
