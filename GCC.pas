@@ -8,7 +8,7 @@ uses
   JvgShadow, Vcl.ComCtrls, JvExComCtrls, JvStatusBar, JvSpeedbar, JvExExtCtrls,
   JvExtComponent, System.ImageList, Vcl.ImgList, System.Actions, Vcl.ActnList,
   Vcl.Menus, JvMenus, JvFormPlacement, JvComponentBase, JvAppStorage,
-  JvAppIniStorage, Vcl.Grids, JvExGrids, JvStringGrid, AddLine;
+  JvAppIniStorage, Vcl.Grids, JvExGrids, JvStringGrid ;
 
 type
   TMainForm = class(TForm)
@@ -51,6 +51,9 @@ var
 
 implementation
 
+uses
+  AddLine;
+
 {$R *.dfm}
 
 procedure TMainForm.Action_OkButtonAddLineExecute(Sender: TObject);
@@ -59,20 +62,27 @@ var
   BackPoint : TMyPoint;
 begin
   FName := AddForm.JvFilenameEdit1.FileName;
-  BackPoint.PosX := StrToInt(AddForm.JvEdit1.Text);
-  BackPoint.PosY := StrToInt(AddForm.JvEdit2.Text);
 
-  JvStringGrid1.InsertRow(JvStringGrid1.RowCount);
-  JvStringGrid1.ActivateCell(0, JvStringGrid1.RowCount - 1);
+  if (FName <> '') then
+    begin
 
-  JvStringGrid1.Cells[0, JvStringGrid1.RowCount - 1] := FName;
-  JvStringGrid1.Cells[1, JvStringGrid1.RowCount - 1] := FloatToStr(BackPoint.PosX);
-  JvStringGrid1.Cells[2, JvStringGrid1.RowCount - 1] := FloatToStr(BackPoint.PosY);
-  JvStringGrid1.FixedRows := 1;
+    BackPoint.PosX := StrToInt(AddForm.JvEdit1.Text);
+    BackPoint.PosY := StrToInt(AddForm.JvEdit2.Text);
 
+    JvStringGrid1.InsertRow(JvStringGrid1.RowCount);
+    JvStringGrid1.ActivateCell(0, JvStringGrid1.RowCount - 1);
 
-  AddForm.Close;
+    JvStringGrid1.Cells[0, JvStringGrid1.RowCount - 1] := FName;
+    JvStringGrid1.Cells[1, JvStringGrid1.RowCount - 1] := FloatToStr(BackPoint.PosX);
+    JvStringGrid1.Cells[2, JvStringGrid1.RowCount - 1] := FloatToStr(BackPoint.PosY);
+    JvStringGrid1.FixedRows := 1;
 
+    AddForm.Close;
+    end
+  else
+    begin
+      MessageDlg('Select file to add!', mtInformation, [mbOk], 0, mbOk);
+    end;
 end;
 
 procedure TMainForm.Action_AddLineExecute(Sender: TObject);
