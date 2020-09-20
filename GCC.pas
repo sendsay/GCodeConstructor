@@ -10,7 +10,7 @@ uses
   Vcl.Menus, JvMenus, JvFormPlacement, JvComponentBase, JvAppStorage,
   JvAppIniStorage, Vcl.Grids, JvExGrids, JvStringGrid, System.UITypes, JvLabel,
   Vcl.StdCtrls, JvExStdCtrls, JvEdit, JvGroupBox, JvPanel, Vcl.Mask, JvExMask,
-  JvToolEdit, JvBaseEdits ;
+  JvToolEdit, JvBaseEdits, PerlRegEx ;
 
 type
   TMainForm = class(TForm)
@@ -40,6 +40,7 @@ type
     Action_Process: TAction;
     JvCalcEdit1: TJvCalcEdit;
     JvCalcEdit2: TJvCalcEdit;
+    PerlRegEx1: TPerlRegEx;
     procedure FormCreate(Sender: TObject);
     procedure Action_ExitExecute(Sender: TObject);
     procedure Action_AddLineExecute(Sender: TObject);
@@ -51,6 +52,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+
   end;
 
   TMyPoint = record
@@ -60,12 +62,66 @@ type
 var
   MainForm: TMainForm;
 
+function MoveCoord(S: string; NewPosX, NewPosY: Double):string;
+
 implementation
 
 uses
   AddLine;
 
 {$R *.dfm}
+
+function MoveCoord(S: string; NewPosX, NewPosY: Double):string;
+var
+  PosX, PosY : Double;
+  PosXStr, PosYStr : string;
+begin
+  with MainForm.PerlRegEx1 do
+  begin
+    Subject := S;
+
+    if NewPosX <> 0 then
+    begin
+        RegEx := 'X\d+(.|,)\d+';
+        if Match then
+        begin
+          PosXStr := MatchedExpression;
+          Delete(PosXStr, 1, 1);
+          PosX := StrToFloat(PosXStr);
+
+          if NewPosX > 0 then PosX := PosX + NewPosX
+          else
+          if NewPosX < 0 then PosX := PosX - Abs(NewPosX);
+
+          Replacement := 'X' + FloatToStr(PosX);
+          if Match then Replace;
+        end;
+
+    end;
+
+    if NewPosY <> 0 then
+    begin
+
+        RegEx := 'Y\d+(.|,)\d+';
+        if Match then
+        begin
+          PosYStr := MatchedExpression;
+          Delete(PosYStr, 1, 1);
+          PosY := StrToFloat(PosYStr);
+
+          if NewPosY > 0 then PosY := PosY + NewPosY
+          else
+          if NewPosY < 0 then PosY := PosY - Abs(NewPosY);
+
+          Replacement := 'X' + FloatToStr(PosY);
+          if Match then Replace;
+        end;
+
+    end;
+
+    Result := Subject;
+  end;
+end;
 
 procedure TMainForm.Action_OkButtonAddLineExecute(Sender: TObject);
 var
@@ -102,16 +158,19 @@ var
   FileOutput, FileInput : file;
 
 begin
-  AssignFile(FileOutput, 'C:\test.txt');
-  Rewrite(FileOutput);
-
-  ShowMessage(FloatToStr(JvCalcEdit1.Value));
 
 
 
-
-
-  CloseFile(FileOutput);
+//  AssignFile(FileOutput, 'C:\test.txt');
+//  Rewrite(FileOutput);
+//
+//  ShowMessage(FloatToStr(JvCalcEdit1.Value));
+//
+//
+//
+//
+//
+//  CloseFile(FileOutput);
 end;
 
 procedure TMainForm.Action_AddLineExecute(Sender: TObject);

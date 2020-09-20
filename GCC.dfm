@@ -2,7 +2,7 @@ object MainForm: TMainForm
   Left = 0
   Top = 0
   Caption = 'MainForm'
-  ClientHeight = 399
+  ClientHeight = 379
   ClientWidth = 847
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,7 +17,7 @@ object MainForm: TMainForm
   TextHeight = 16
   object JvStatusBar1: TJvStatusBar
     Left = 0
-    Top = 380
+    Top = 360
     Width = 847
     Height = 19
     Panels = <>
@@ -89,7 +89,7 @@ object MainForm: TMainForm
     Left = 0
     Top = 74
     Width = 696
-    Height = 306
+    Height = 286
     Align = alClient
     ColCount = 3
     FixedCols = 0
@@ -103,6 +103,7 @@ object MainForm: TMainForm
     FixedFont.Height = -11
     FixedFont.Name = 'Tahoma'
     FixedFont.Style = []
+    ExplicitTop = 68
     ColWidths = (
       302
       64
@@ -114,11 +115,9 @@ object MainForm: TMainForm
     Left = 696
     Top = 74
     Width = 151
-    Height = 306
+    Height = 286
     Align = alRight
     TabOrder = 3
-    ExplicitLeft = 702
-    ExplicitTop = 68
     object JvGroupBox1: TJvGroupBox
       Left = 6
       Top = 6
@@ -132,6 +131,7 @@ object MainForm: TMainForm
         Width = 15
         Height = 16
         Caption = 'X:'
+        Transparent = True
       end
       object JvLabel2: TJvLabel
         Left = 15
@@ -139,6 +139,7 @@ object MainForm: TMainForm
         Width = 14
         Height = 16
         Caption = 'Y:'
+        Transparent = True
       end
       object JvCalcEdit1: TJvCalcEdit
         Left = 36
@@ -172,7 +173,7 @@ object MainForm: TMainForm
     Left = 568
     Top = 72
     Bitmap = {
-      494C010104004800480040004000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101040048004C0040004000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000000100008000000001002000000000000000
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -4490,5 +4491,10 @@ object MainForm: TMainForm
         Caption = 'About'
       end
     end
+  end
+  object PerlRegEx1: TPerlRegEx
+    Options = []
+    Left = 720
+    Top = 208
   end
 end

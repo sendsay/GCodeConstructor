@@ -1434,18 +1434,18 @@ BEGIN
 	System_SysConst_SDiskFull,	L"Disk full"
 END
 
-/* c:\program files\embarcadero\studio\19.0\lib\Win32\release\Controls.res */
-/* c:\program files\embarcadero\studio\19.0\lib\Win32\release\Buttons.res */
-/* C:\Program Files\Embarcadero\Studio\19.0\source\jcl-2.8.0.6633\lib\d25\win32\debug\JclUnicode.res */
-/* C:\Program Files\Embarcadero\Studio\19.0\source\JVCL\Resources\JvConsts.res */
-/* c:\program files\embarcadero\studio\19.0\source\JVCL\lib\D25\win32\JvSpeedbarSetupForm.dfm */
-/* c:\program files\embarcadero\studio\19.0\lib\Win32\release\FileCtrl.res */
-/* c:\program files\embarcadero\studio\19.0\lib\Win32\release\ExtDlgs.res */
-/* C:\Program Files\Embarcadero\Studio\19.0\source\JVCL\Resources\JvToolEdit.res */
-/* C:\Program Files\Embarcadero\Studio\19.0\source\JVCL\Resources\JvCalc.Res */
-/* C:\Program Files\Embarcadero\Studio\19.0\source\JVCL\Resources\JvBaseEdits.Res */
-/* D:\Projects\GCodeConstructor\AddLine.dfm */
-/* D:\Projects\GCodeConstructor\GCC.dfm */
-/* c:\program files\embarcadero\studio\19.0\lib\Win32\release\CategoryButtons.res */
-/* D:\Projects\GCodeConstructor\Project_GCC.res */
-/* D:\Projects\GCodeConstructor\Project_GCC.drf */
+/* c:\program files (x86)\embarcadero\studio\19.0\lib\Win32\release\Controls.res */
+/* c:\program files (x86)\embarcadero\studio\19.0\lib\Win32\release\Buttons.res */
+/* C:\Program Files (x86)\Embarcadero\Studio\19.0\source\jcl-2.8.0.7505\lib\d25\win32\debug\JclUnicode.res */
+/* C:\Program Files (x86)\Embarcadero\Studio\19.0\source\JVCL\Resources\JvConsts.res */
+/* c:\program files (x86)\embarcadero\studio\19.0\source\JVCL\lib\D25\win32\JvSpeedbarSetupForm.dfm */
+/* c:\program files (x86)\embarcadero\studio\19.0\lib\Win32\release\FileCtrl.res */
+/* c:\program files (x86)\embarcadero\studio\19.0\lib\Win32\release\ExtDlgs.res */
+/* C:\Program Files (x86)\Embarcadero\Studio\19.0\source\JVCL\Resources\JvToolEdit.res */
+/* C:\Program Files (x86)\Embarcadero\Studio\19.0\source\JVCL\Resources\JvCalc.Res */
+/* C:\Program Files (x86)\Embarcadero\Studio\19.0\source\JVCL\Resources\JvBaseEdits.Res */
+/* D:\Projects\Delphi\GCodeConstructor\AddLine.dfm */
+/* D:\Projects\Delphi\GCodeConstructor\GCC.dfm */
+/* c:\program files (x86)\embarcadero\studio\19.0\lib\Win32\release\CategoryButtons.res */
+/* D:\Projects\Delphi\GCodeConstructor\Project_GCC.res */
+/* D:\Projects\Delphi\GCodeConstructor\Project_GCC.drf */
