@@ -18,9 +18,9 @@ object AddForm: TAddForm
   object JvLabel1: TJvLabel
     Left = 15
     Top = 42
-    Width = 59
+    Width = 94
     Height = 16
-    Caption = 'Next to X:'
+    Caption = 'Strat point to X:'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -31,9 +31,9 @@ object AddForm: TAddForm
   object JvLabel2: TJvLabel
     Left = 15
     Top = 72
-    Width = 58
+    Width = 93
     Height = 16
-    Caption = 'Next to Y:'
+    Caption = 'Start point to Y:'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -68,7 +68,6 @@ object AddForm: TAddForm
     Align = alBottom
     BorderStyle = bsSingle
     TabOrder = 1
-    ExplicitTop = 103
     object Button1: TButton
       Left = 235
       Top = 8
@@ -87,8 +86,8 @@ object AddForm: TAddForm
     end
   end
   object JvCalcEdit2: TJvCalcEdit
-    Left = 81
-    Top = 38
+    Left = 115
+    Top = 68
     Width = 93
     Height = 24
     DecimalPlaces = 3
@@ -99,8 +98,8 @@ object AddForm: TAddForm
     DecimalPlacesAlwaysShown = True
   end
   object JvCalcEdit1: TJvCalcEdit
-    Left = 80
-    Top = 68
+    Left = 115
+    Top = 38
     Width = 93
     Height = 24
     DecimalPlaces = 3

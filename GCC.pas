@@ -33,14 +33,10 @@ type
     Action_OkButtonAddLine: TAction;
     Action_CancelButtonAddLine: TAction;
     JvPanel1: TJvPanel;
-    JvGroupBox1: TJvGroupBox;
-    JvLabel1: TJvLabel;
-    JvLabel2: TJvLabel;
     JvSpeedItem4: TJvSpeedItem;
     Action_Process: TAction;
-    JvCalcEdit1: TJvCalcEdit;
-    JvCalcEdit2: TJvCalcEdit;
     PerlRegEx1: TPerlRegEx;
+    JvSpeedItem5: TJvSpeedItem;
     procedure FormCreate(Sender: TObject);
     procedure Action_ExitExecute(Sender: TObject);
     procedure Action_AddLineExecute(Sender: TObject);
@@ -96,12 +92,10 @@ begin
           Replacement := 'X' + FloatToStr(PosX);
           if Match then Replace;
         end;
-
     end;
 
     if NewPosY <> 0 then
     begin
-
         RegEx := 'Y\d+(.|,)\d+';
         if Match then
         begin
@@ -116,9 +110,7 @@ begin
           Replacement := 'Y' + FloatToStr(PosY);
           if Match then Replace;
         end;
-
     end;
-
     Result := Subject;
   end;
 end;
@@ -155,22 +147,39 @@ end;
 
 procedure TMainForm.Action_ProcessExecute(Sender: TObject);
 var
-  FileOutput, FileInput : file;
-
+  InList, OutList : TStringList;
+  FName : string;
+  PosX, PosY : Double;
+  I, J: Integer;
+  NewPos : string;
 begin
+  InList := TStringList.Create;
+  OutList := TStringList.Create;
+
+  for I := 1 to JvStringGrid1.RowCount - 1 do
+  begin
+    FName := JvStringGrid1.Cells[0, I];
+    PosX := StrToFloat(JvStringGrid1.Cells[1, I]);
+    PosY := StrToFloat(JvStringGrid1.Cells[2, I]);
+
+    InList.Clear;
+    InList.LoadFromFile(FName);
+
+    for J := 0 to InList.Count - 1 do
+    begin
+      NewPos := MoveCoord(InList.Strings[J], PosX, PosY);
+      OutList.Append(NewPos);
+    end;
+  end;
 
 
 
-//  AssignFile(FileOutput, 'C:\test.txt');
-//  Rewrite(FileOutput);
-//
-//  ShowMessage(FloatToStr(JvCalcEdit1.Value));
-//
-//
-//
-//
-//
-//  CloseFile(FileOutput);
+  OutList.SaveToFile('C:\test2.txt');
+
+
+
+  InList.Destroy;
+  OutList.Destroy;
 end;
 
 procedure TMainForm.Action_AddLineExecute(Sender: TObject);
@@ -206,8 +215,8 @@ end;
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
   JvStringGrid1.Cells[0, 0] := 'File name';
-  JvStringGrid1.Cells[1, 0] := 'Back to X';
-  JvStringGrid1.Cells[2, 0] := 'Back to Y';
+  JvStringGrid1.Cells[1, 0] := 'Start on X';
+  JvStringGrid1.Cells[2, 0] := 'Start on Y';
 end;
 
 end.

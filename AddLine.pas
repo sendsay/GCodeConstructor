@@ -36,7 +36,6 @@ uses
 
 {$R *.dfm}
 
-
 procedure TAddForm.FormShow(Sender: TObject);
 begin
   JvFilenameEdit1.SetFocus;
