@@ -1,7 +1,7 @@
 object AddForm: TAddForm
   Left = 0
   Top = 0
-  Caption = 'AddForm'
+  Caption = 'Add line'
   ClientHeight = 144
   ClientWidth = 413
   Color = clBtnFace
@@ -20,7 +20,7 @@ object AddForm: TAddForm
     Top = 42
     Width = 94
     Height = 16
-    Caption = 'Strat point to X:'
+    Caption = 'Start point at X:'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -33,7 +33,7 @@ object AddForm: TAddForm
     Top = 72
     Width = 93
     Height = 16
-    Caption = 'Start point to Y:'
+    Caption = 'Start point at Y:'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -67,7 +67,7 @@ object AddForm: TAddForm
     ShowCaption = False
     Align = alBottom
     BorderStyle = bsSingle
-    TabOrder = 1
+    TabOrder = 3
     object Button1: TButton
       Left = 235
       Top = 8
@@ -86,7 +86,7 @@ object AddForm: TAddForm
     end
   end
   object JvCalcEdit2: TJvCalcEdit
-    Left = 115
+    Left = 114
     Top = 68
     Width = 93
     Height = 24
@@ -106,7 +106,7 @@ object AddForm: TAddForm
     DisplayFormat = ',0.000'
     FormatOnEditing = True
     PopupAlign = epaLeft
-    TabOrder = 3
+    TabOrder = 1
     DecimalPlacesAlwaysShown = True
   end
 end

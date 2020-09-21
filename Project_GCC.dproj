@@ -119,6 +119,10 @@
             <Form>ParamsForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="EditLine.pas">
+            <Form>EditForm</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

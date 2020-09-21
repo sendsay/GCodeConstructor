@@ -2,7 +2,7 @@ object MainForm: TMainForm
   Left = 0
   Top = 0
   Caption = 'MainForm'
-  ClientHeight = 360
+  ClientHeight = 341
   ClientWidth = 847
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,7 +17,7 @@ object MainForm: TMainForm
   TextHeight = 16
   object JvStatusBar1: TJvStatusBar
     Left = 0
-    Top = 341
+    Top = 322
     Width = 847
     Height = 19
     Panels = <>
@@ -39,7 +39,6 @@ object MainForm: TMainForm
     Images = ImageList1
     BorderStyle = bsSingle
     TabOrder = 1
-    ExplicitTop = -6
     InternalVer = 1
     object JvSpeedBarSection1: TJvSpeedBarSection
       Caption = 'Untitled (0)'
@@ -62,6 +61,7 @@ object MainForm: TMainForm
       Left = 203
       Top = 3
       Visible = True
+      OnClick = Action_EditLineExecute
       SectionName = 'Untitled (0)'
     end
     object JvSpeedItem3: TJvSpeedItem
@@ -100,7 +100,7 @@ object MainForm: TMainForm
     Left = 0
     Top = 74
     Width = 696
-    Height = 267
+    Height = 248
     Align = alClient
     ColCount = 3
     FixedCols = 0
@@ -125,7 +125,7 @@ object MainForm: TMainForm
     Left = 696
     Top = 74
     Width = 151
-    Height = 267
+    Height = 248
     Align = alRight
     TabOrder = 3
   end
@@ -135,7 +135,7 @@ object MainForm: TMainForm
     Left = 568
     Top = 72
     Bitmap = {
-      494C010105005000580040004000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105005C005C0040004000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000000100008000000001002000000000000000
       020000000000000000000000000000000000000000FF000000FF000000FF0000
       00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
@@ -4376,6 +4376,7 @@ object MainForm: TMainForm
     end
     object Action_EditLine: TAction
       Enabled = False
+      OnExecute = Action_EditLineExecute
     end
     object Action_DeleteLine: TAction
       Enabled = False
@@ -4395,15 +4396,23 @@ object MainForm: TMainForm
     end
     object Action_Process: TAction
       Caption = 'Process'
+      Enabled = False
       OnExecute = Action_ProcessExecute
     end
     object ActionCancelButtonOptions: TAction
-      Caption = 'ActionCancelButtonOptions'
+      Caption = 'Cancel'
       OnExecute = ActionCancelButtonOptionsExecute
     end
     object Action_CallParamsForm: TAction
-      Caption = 'Action_CallParamsForm'
       OnExecute = Action_CallParamsFormExecute
+    end
+    object Action_CancelButtonEdit: TAction
+      Caption = 'Cancel'
+      OnExecute = Action_CancelButtonEditExecute
+    end
+    object Action_OkButtonEdit: TAction
+      Caption = 'OK'
+      OnExecute = Action_OkButtonEditExecute
     end
   end
   object JvAppIniFileStorage1: TJvAppIniFileStorage

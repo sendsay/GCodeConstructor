@@ -40,6 +40,8 @@ type
     ActionCancelButtonOptions: TAction;
     Action_CallParamsForm: TAction;
     JvSaveDialog1: TJvSaveDialog;
+    Action_CancelButtonEdit: TAction;
+    Action_OkButtonEdit: TAction;
     procedure FormCreate(Sender: TObject);
     procedure Action_ExitExecute(Sender: TObject);
     procedure Action_AddLineExecute(Sender: TObject);
@@ -49,6 +51,9 @@ type
     procedure Action_ProcessExecute(Sender: TObject);
     procedure ActionCancelButtonOptionsExecute(Sender: TObject);
     procedure Action_CallParamsFormExecute(Sender: TObject);
+    procedure Action_EditLineExecute(Sender: TObject);
+    procedure Action_CancelButtonEditExecute(Sender: TObject);
+    procedure Action_OkButtonEditExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -68,7 +73,7 @@ function MoveCoord(S: string; NewPosX, NewPosY: Double):string;
 implementation
 
 uses
-  AddLine, Params;
+  AddLine, Params, EditLine;
 
 {$R *.dfm}
 
@@ -143,6 +148,8 @@ begin
 
     AddForm.Close;
     Action_DeleteLine.Enabled := True;
+    Action_EditLine.Enabled := True;
+    Action_Process.Enabled := True;
     end
   else
     begin
@@ -152,7 +159,7 @@ end;
 
 procedure TMainForm.Action_ProcessExecute(Sender: TObject);
 var
-  InList, OutList : TStringList;
+  InList, OutList, HeaderList : TStringList;
   FName : string;
   PosX, PosY : Double;
   I, J: Integer;
@@ -161,6 +168,7 @@ var
 begin
   InList := TStringList.Create;
   OutList := TStringList.Create;
+  HeaderList := TStringList.Create;
 
   for I := 1 to JvStringGrid1.RowCount - 1 do
   begin
@@ -178,33 +186,49 @@ begin
     end;
   end;
 
-  for K := ParamsForm.JvEditor1.Lines.Count - 1 downto 0 do
+  MainForm.JvAppIniFileStorage1.ReadStringList('ParamsForm\JvEditor1_Lines', HeaderList, True);
+  for K := HeaderList.Count - 1 downto 0 do
   begin
-    HeaderFooter := ParamsForm.JvEditor1.Lines[K];
+    HeaderFooter := HeaderList.Strings[K];
     OutList.Insert(0, HeaderFooter);
-    showmessage(headerfooter);
   end;
 
-  for L := 0 to ParamsForm.JvEditor2.Lines.Count - 1 do
+  MainForm.JvAppIniFileStorage1.ReadStringList('ParamsForm\JvEditor2_Lines', HeaderList, True);
+  for L := 0 to HeaderList.Count - 1 do
   begin
-    HeaderFooter := ParamsForm.JvEditor2.Lines[L];
+    HeaderFooter := HeaderList.Strings[L];
     OutList.Append(HeaderFooter);
-    showmessage(headerfooter);
   end;
 
-
-
-
-
+  if (Mainform.JvSaveDialog1.Execute) then
+    OutList.SaveToFile(MainForm.JvSaveDialog1.FileName);
 
 
   InList.Destroy;
   OutList.Destroy;
+  HeaderList.Destroy;
 end;
 
 procedure TMainForm.ActionCancelButtonOptionsExecute(Sender: TObject);
 begin
   ParamsForm.Close;
+end;
+
+procedure TMainForm.Action_OkButtonEditExecute(Sender: TObject);
+var
+  SelLine : integer;
+begin
+  SelLine := JvStringGrid1.Row;
+
+  JvStringGrid1.Cells[0, SelLine] := EditForm.JvFilenameEdit1.FileName;
+  JvStringGrid1.Cells[1, SelLine] := FloatToStr(EditForm.JvCalcEdit1.Value);
+  JvStringGrid1.Cells[2, SelLine] := FloatToStr(EditForm.JvCalcEdit2.Value);
+
+  JvStringGrid1.Update;
+
+  EditForm.Close;
+
+
 end;
 
 procedure TMainForm.Action_AddLineExecute(Sender: TObject);
@@ -222,6 +246,11 @@ begin
   AddForm.Close;
 end;
 
+procedure TMainForm.Action_CancelButtonEditExecute(Sender: TObject);
+begin
+  EditForm.Close;
+end;
+
 procedure TMainForm.Action_DeleteLineExecute(Sender: TObject);
 begin
   if MessageDlg('Are you sure?', mtConfirmation,
@@ -233,8 +262,28 @@ begin
   if (JvStringGrid1.Row = 0) then
     begin
       Action_DeleteLine.Enabled := False;
+      Action_EditLine.Enabled := False;
+      Action_Process.Enabled := False;
     end;
 
+end;
+
+procedure TMainForm.Action_EditLineExecute(Sender: TObject);
+var
+  SelLine : integer;
+  FName, PosX, PosY : string;
+begin
+  SelLine := JvStringGrid1.Row;
+
+  FName := JvStringGrid1.Cells[0, SelLine];
+  PosX := JvStringGrid1.Cells[1, SelLine];
+  PosY := JvStringGrid1.Cells[2, SelLine];
+
+  EditForm.JvFilenameEdit1.FileName := FName;
+  EditForm.JvCalcEdit1.Value := StrToFloat(PosX);
+  EditForm.JvCalcEdit2.Value := StrToFloat(PosY);
+
+  EditForm.ShowModal;
 end;
 
 procedure TMainForm.Action_ExitExecute(Sender: TObject);

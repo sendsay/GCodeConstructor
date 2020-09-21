@@ -6,7 +6,8 @@ uses
   Vcl.Themes,
   Vcl.Styles,
   AddLine in 'AddLine.pas' {AddForm},
-  Params in 'Params.pas' {ParamsForm};
+  Params in 'Params.pas' {ParamsForm},
+  EditLine in 'EditLine.pas' {EditForm};
 
 {$R *.res}
 
@@ -19,5 +20,6 @@ begin
   Application.CreateForm(TAddForm, AddForm);
   Application.CreateForm(TAddForm, AddForm);
   Application.CreateForm(TParamsForm, ParamsForm);
+  Application.CreateForm(TEditForm, EditForm);
   Application.Run;
 end.
