@@ -113,7 +113,7 @@ begin
           else
           if NewPosY < 0 then PosY := PosY - Abs(NewPosY);
 
-          Replacement := 'X' + FloatToStr(PosY);
+          Replacement := 'Y' + FloatToStr(PosY);
           if Match then Replace;
         end;
 
