@@ -115,6 +115,10 @@
             <Form>AddForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Params.pas">
+            <Form>ParamsForm</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -139,6 +143,9 @@
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k250.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dclofficexp250.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
+                <Language>
+                    <Language Name="ProjectLang">$00000419</Language>
+                </Language>
                 <Resource_DLL_Projects>
                     <Resource_DLL_Projects Name="Item0">Русский (Россия)*$00000419*RUS*RUS</Resource_DLL_Projects>
                 </Resource_DLL_Projects>
@@ -147,9 +154,6 @@
                     <RDP_Source_Files Name="Item1">AddLine.dfm</RDP_Source_Files>
                     <RDP_Source_Files Name="Item2">Win32\Debug\Project_GCC.drc</RDP_Source_Files>
                 </RDP_Source_Files>
-                <Language>
-                    <Language Name="ProjectLang">$00000419</Language>
-                </Language>
             </Delphi.Personality>
             <Deployment Version="3">
                 <DeployFile LocalName="Win32\Debug\Project_GCC.exe" Configuration="Debug" Class="ProjectOutput">

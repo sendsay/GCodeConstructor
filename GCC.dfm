@@ -39,6 +39,7 @@ object MainForm: TMainForm
     Images = ImageList1
     BorderStyle = bsSingle
     TabOrder = 1
+    ExplicitTop = -6
     InternalVer = 1
     object JvSpeedBarSection1: TJvSpeedBarSection
       Caption = 'Untitled (0)'
@@ -85,12 +86,13 @@ object MainForm: TMainForm
       SectionName = 'Untitled (0)'
     end
     object JvSpeedItem5: TJvSpeedItem
-      Hint = '|'
+      Action = Action_CallParamsForm
       ImageIndex = 4
       Spacing = 1
       Left = 771
       Top = 3
       Visible = True
+      OnClick = Action_CallParamsFormExecute
       SectionName = 'Untitled (0)'
     end
   end
@@ -4395,6 +4397,14 @@ object MainForm: TMainForm
       Caption = 'Process'
       OnExecute = Action_ProcessExecute
     end
+    object ActionCancelButtonOptions: TAction
+      Caption = 'ActionCancelButtonOptions'
+      OnExecute = ActionCancelButtonOptionsExecute
+    end
+    object Action_CallParamsForm: TAction
+      Caption = 'Action_CallParamsForm'
+      OnExecute = Action_CallParamsFormExecute
+    end
   end
   object JvAppIniFileStorage1: TJvAppIniFileStorage
     StorageOptions.BooleanStringTrueValues = 'TRUE, YES, Y'
@@ -4453,5 +4463,12 @@ object MainForm: TMainForm
     Options = []
     Left = 720
     Top = 208
+  end
+  object JvSaveDialog1: TJvSaveDialog
+    AutoSize = True
+    Height = 0
+    Width = 0
+    Left = 600
+    Top = 192
   end
 end

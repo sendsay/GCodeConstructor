@@ -10,7 +10,7 @@ uses
   Vcl.Menus, JvMenus, JvFormPlacement, JvComponentBase, JvAppStorage,
   JvAppIniStorage, Vcl.Grids, JvExGrids, JvStringGrid, System.UITypes, JvLabel,
   Vcl.StdCtrls, JvExStdCtrls, JvEdit, JvGroupBox, JvPanel, Vcl.Mask, JvExMask,
-  JvToolEdit, JvBaseEdits, PerlRegEx ;
+  JvToolEdit, JvBaseEdits, PerlRegEx, JvDialogs ;
 
 type
   TMainForm = class(TForm)
@@ -37,6 +37,9 @@ type
     Action_Process: TAction;
     PerlRegEx1: TPerlRegEx;
     JvSpeedItem5: TJvSpeedItem;
+    ActionCancelButtonOptions: TAction;
+    Action_CallParamsForm: TAction;
+    JvSaveDialog1: TJvSaveDialog;
     procedure FormCreate(Sender: TObject);
     procedure Action_ExitExecute(Sender: TObject);
     procedure Action_AddLineExecute(Sender: TObject);
@@ -44,6 +47,8 @@ type
     procedure Action_CancelButtonAddLineExecute(Sender: TObject);
     procedure Action_DeleteLineExecute(Sender: TObject);
     procedure Action_ProcessExecute(Sender: TObject);
+    procedure ActionCancelButtonOptionsExecute(Sender: TObject);
+    procedure Action_CallParamsFormExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -63,7 +68,7 @@ function MoveCoord(S: string; NewPosX, NewPosY: Double):string;
 implementation
 
 uses
-  AddLine;
+  AddLine, Params;
 
 {$R *.dfm}
 
@@ -151,7 +156,8 @@ var
   FName : string;
   PosX, PosY : Double;
   I, J: Integer;
-  NewPos : string;
+  NewPos, HeaderFooter : string;
+  K, L: Integer;
 begin
   InList := TStringList.Create;
   OutList := TStringList.Create;
@@ -172,9 +178,23 @@ begin
     end;
   end;
 
+  for K := ParamsForm.JvEditor1.Lines.Count - 1 downto 0 do
+  begin
+    HeaderFooter := ParamsForm.JvEditor1.Lines[K];
+    OutList.Insert(0, HeaderFooter);
+    showmessage(headerfooter);
+  end;
+
+  for L := 0 to ParamsForm.JvEditor2.Lines.Count - 1 do
+  begin
+    HeaderFooter := ParamsForm.JvEditor2.Lines[L];
+    OutList.Append(HeaderFooter);
+    showmessage(headerfooter);
+  end;
 
 
-  OutList.SaveToFile('C:\test2.txt');
+
+
 
 
 
@@ -182,9 +202,19 @@ begin
   OutList.Destroy;
 end;
 
+procedure TMainForm.ActionCancelButtonOptionsExecute(Sender: TObject);
+begin
+  ParamsForm.Close;
+end;
+
 procedure TMainForm.Action_AddLineExecute(Sender: TObject);
 begin
   AddForm.ShowModal;
+end;
+
+procedure TMainForm.Action_CallParamsFormExecute(Sender: TObject);
+begin
+  ParamsForm.ShowModal;
 end;
 
 procedure TMainForm.Action_CancelButtonAddLineExecute(Sender: TObject);
