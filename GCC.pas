@@ -42,6 +42,8 @@ type
     JvSaveDialog1: TJvSaveDialog;
     Action_CancelButtonEdit: TAction;
     Action_OkButtonEdit: TAction;
+    JvSpeedItem6: TJvSpeedItem;
+    Action_NewProject: TAction;
     procedure FormCreate(Sender: TObject);
     procedure Action_ExitExecute(Sender: TObject);
     procedure Action_AddLineExecute(Sender: TObject);
@@ -54,10 +56,12 @@ type
     procedure Action_EditLineExecute(Sender: TObject);
     procedure Action_CancelButtonEditExecute(Sender: TObject);
     procedure Action_OkButtonEditExecute(Sender: TObject);
+    procedure Action_NewProjectExecute(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+     TableEdited: boolean;
 
   end;
 
@@ -67,6 +71,7 @@ type
 
 var
   MainForm: TMainForm;
+
 
 function MoveCoord(S: string; NewPosX, NewPosY: Double):string;
 
@@ -150,6 +155,7 @@ begin
     Action_DeleteLine.Enabled := True;
     Action_EditLine.Enabled := True;
     Action_Process.Enabled := True;
+    TableEdited := True;
     end
   else
     begin
@@ -264,6 +270,7 @@ begin
       Action_DeleteLine.Enabled := False;
       Action_EditLine.Enabled := False;
       Action_Process.Enabled := False;
+      TableEdited := False;
     end;
 
 end;
@@ -289,6 +296,14 @@ end;
 procedure TMainForm.Action_ExitExecute(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TMainForm.Action_NewProjectExecute(Sender: TObject);
+begin
+  if TableEdited then
+  begin
+    showmessage('edited!');
+  end;
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
