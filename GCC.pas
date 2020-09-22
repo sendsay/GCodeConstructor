@@ -39,12 +39,16 @@ type
     JvSpeedItem5: TJvSpeedItem;
     ActionCancelButtonOptions: TAction;
     Action_CallParamsForm: TAction;
-    JvSaveDialog1: TJvSaveDialog;
     Action_CancelButtonEdit: TAction;
     Action_OkButtonEdit: TAction;
     JvSpeedItem6: TJvSpeedItem;
     Action_NewProject: TAction;
-    procedure FormCreate(Sender: TObject);
+    JvSaveDialog1: TJvSaveDialog;
+    Action_LoadProjectFile: TAction;
+    JvOpenDialog1: TJvOpenDialog;
+    JvSpeedItem7: TJvSpeedItem;
+    Action_SaveProjectFile: TAction;
+    JvSpeedItem8: TJvSpeedItem;
     procedure Action_ExitExecute(Sender: TObject);
     procedure Action_AddLineExecute(Sender: TObject);
     procedure Action_OkButtonAddLineExecute(Sender: TObject);
@@ -57,11 +61,15 @@ type
     procedure Action_CancelButtonEditExecute(Sender: TObject);
     procedure Action_OkButtonEditExecute(Sender: TObject);
     procedure Action_NewProjectExecute(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure Action_LoadProjectFileExecute(Sender: TObject);
+    procedure Action_SaveProjectFileExecute(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
      TableEdited: boolean;
+
 
   end;
 
@@ -74,6 +82,8 @@ var
 
 
 function MoveCoord(S: string; NewPosX, NewPosY: Double):string;
+procedure FillFixedRow;
+procedure SaveProjectFile;
 
 implementation
 
@@ -215,6 +225,27 @@ begin
   HeaderList.Destroy;
 end;
 
+procedure TMainForm.Action_SaveProjectFileExecute(Sender: TObject);
+begin
+  SaveProjectFile;
+end;
+
+procedure TMainForm.Action_LoadProjectFileExecute(Sender: TObject);
+var
+  FName :string;
+begin
+  if MainForm.JvOpenDialog1.Execute then
+  begin
+    FName := MainForm.JvOpenDialog1.FileName;
+    MainForm.JvStringGrid1.LoadFromFile(FName);
+  end;
+end;
+
+procedure TMainForm.FormCreate(Sender: TObject);
+begin
+  FillFixedRow;
+end;
+
 procedure TMainForm.ActionCancelButtonOptionsExecute(Sender: TObject);
 begin
   ParamsForm.Close;
@@ -299,18 +330,51 @@ begin
 end;
 
 procedure TMainForm.Action_NewProjectExecute(Sender: TObject);
+var
+  I: Integer;
+  FName : string;
 begin
   if TableEdited then
   begin
-    showmessage('edited!');
-  end;
+    case Application.MessageBox('Save current poject?', 'Application.Title',
+      MB_YESNOCANCEL + MB_ICONQUESTION) of
+      IDYES:
+        begin
+          SaveProjectFile;
+
+        end;
+      IDNO:
+        begin
+            for I := 0 to MainForm.JvStringGrid1.RowCount - 1 do
+            begin
+              MainForm.JvStringGrid1.RemoveRow(MainForm.JvStringGrid1.RowCount - 1);
+            end;
+
+            Action_AddLine.Execute;
+        end;
+    end;
+
+    end;
+
+
 end;
 
-procedure TMainForm.FormCreate(Sender: TObject);
+procedure FillFixedRow;
 begin
-  JvStringGrid1.Cells[0, 0] := 'File name';
-  JvStringGrid1.Cells[1, 0] := 'Start on X';
-  JvStringGrid1.Cells[2, 0] := 'Start on Y';
+  MainForm.JvStringGrid1.Cells[0, 0] := 'File name';
+  MainForm.JvStringGrid1.Cells[1, 0] := 'Start on X';
+  MainForm.JvStringGrid1.Cells[2, 0] := 'Start on Y';
+end;
+
+procedure SaveProjectFile;
+var
+  FName : string;
+begin
+    if MainForm.JvSaveDialog1.Execute then
+    begin
+      FName := MAinForm.JvSaveDialog1.FileName;
+      MainForm.JvStringGrid1.SaveToFile(FName);
+    end;
 end;
 
 end.
